@@ -27,6 +27,7 @@ namespace WinAppGray
             {
                 timer1.Stop();
                 this.Close();
+
             }
 
             progressBar1.Value = progress;
