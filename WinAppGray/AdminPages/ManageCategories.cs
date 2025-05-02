@@ -38,7 +38,18 @@ namespace WinAppGray.AdminPages
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand($"INSERT INTO Categories VALUES ('{txtName.Text}','{txtDetails.Text}','{ddlStatus.SelectedItem.ToString()}','Image')", con);
+            SqlCommand cmd = new SqlCommand($"Select * From Categories WHERE CatName = '{txtName.Text}'", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            if (dt.Rows.Count  > 0)
+            {
+                MessageBox.Show($"{txtName.Text} is already exists", "Warning");
+                return;
+            }
+
+            cmd = new SqlCommand($"INSERT INTO Categories VALUES ('{txtName.Text}','{txtDetails.Text}','{ddlStatus.SelectedItem.ToString()}','Image')", con);
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
