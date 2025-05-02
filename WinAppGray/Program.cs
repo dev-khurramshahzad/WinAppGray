@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinAppGray.AdminPages;
 
 namespace WinAppGray
 {
@@ -23,7 +24,7 @@ namespace WinAppGray
             }
 
 
-            Application.Run(new Form1());
+            Application.Run(new ManageCategories());
         }
     }
 }
